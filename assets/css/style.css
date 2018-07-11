@@ -1,0 +1,29 @@
+
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid red;
+margin-top: 20px;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: red;
+  font-family: 'Marvel', sans-serif;
+  
+}
+
+.search{
+    font-size: large;
+}
+
+.logoDiv{
+    margin-top: 30vh;
+    margin-bottom: 30vh;  
+    text-align: center; 
+}
+.banner{
+    position: absolute;
+    z-index: -1;
+}
