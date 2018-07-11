@@ -2,29 +2,66 @@
 <html lang="en">
 
 <head>
-    <title>
-            <title>Idk API Project</title>
-    </title>
-    <meta charset="UTF-8">
-    <!-- local style  -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- responsive inspection  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- materialize css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <!-- materialize js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <!-- jquery  -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- local js  -->
-    <script type="text/javascript" src="./app.js"></script>
-    <!-- firebase  -->
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    <!-- icons  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+   <title>
+       <title>Superhero Universe</title>
+   </title>
+   <meta charset="UTF-8">
+   <!-- responsive inspection  -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Materialize CSS  -->
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+   <!--Font Awesome-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+       crossorigin="anonymous">
+   <!--Materialize Icons-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--local css-->
+   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+   <!-- jquery  -->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <!-- local js  -->
+   <script type="text/javascript" src="./assets/javascript/logic.js "></script>
+   <!-- firebase  -->
+   <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
 
+</head>
 <body>
+    <nav class="red">
+        <div class="nav-wrapper">
+            <img href="#" src="assets/images/logo.png" width="60px" class="brand-logo">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+ 
+     <nav class = "white search-bar">
+         <div class="nav-wrapper">
+           <form>
+             <div class="input-field">
+               <input id="search " type="search" required>
+               <label class="label-icon" for="search"><i class="material-icons red-text">search</i></label>
+               <i class="material-icons ">close</i>
+             </div>
+           </form>
+         </div>
+       </nav>
+       
+       <div class="filter row">
+         <a class="waves-effect waves-light btn">Toys</a>
+         <a class="waves-effect waves-light btn">Games</a>
+         <a class="waves-effect waves-light btn">Movies</a>
+         <a class="waves-effect waves-light btn">Stats</a>
+         <a class="waves-effect waves-light btn">Comic Books</a>
+       </div>
+ 
+    </div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -119,7 +156,7 @@
                     </div>
             </div>
         </div>
-    </div>
+       
 
 </body>
 
