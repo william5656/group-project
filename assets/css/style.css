@@ -1,5 +1,4 @@
 
-
 .searchTerm {
   float: left;
   width: 100%;
@@ -26,4 +25,24 @@ margin-top: 20px;
 .banner{
     position: absolute;
     z-index: -1;
+=======
+.mainImage{
+    float: right;
+    max-width: 30%;
+    margin-left: 2em;
+}
+.content{
+    padding: 1em;
+}
+.story::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.border-b{
+    border-bottom: solid grey 2px;
+}
+.stars{
+    color: red;
+
 }
