@@ -17,3 +17,7 @@
 .stars{
     color: red;
 }
+
+nav .brand-logo {
+    position: relative;
+}
