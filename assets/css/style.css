@@ -44,5 +44,9 @@ margin-top: 20px;
 }
 .stars{
     color: red;
+}
+
+nav .brand-logo {
+    position: relative;
 
 }
