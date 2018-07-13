@@ -25,7 +25,8 @@ margin-top: 20px;
 .banner{
     position: absolute;
     z-index: -1;
-=======
+}
+
 .mainImage{
     float: right;
     max-width: 30%;
@@ -49,4 +50,16 @@ margin-top: 20px;
 nav .brand-logo {
     position: relative;
 
+}
+
+.heroSubmit {
+    position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 1px; width: 1px; 
+  margin: -1px; padding: 0; border: 0; 
+}
+
+.btn {
+    margin-left : 10px;
 }
