@@ -81,7 +81,10 @@ $(function(){
 
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
-        query = $(".heroSearch").val();
+        var getInput = $(".heroSearch").val();
+        //console.log(getInput);
+        localStorage.setItem("query", getInput);
+        query = localStorage.getItem("query");
         $(".heroSearch").empty();
         //console.log(hero);
         //getInput = hero;
