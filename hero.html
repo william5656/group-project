@@ -42,15 +42,15 @@
                         <div class="col s12 " >
                             <div class="row" id="topbarsearch">
                                 <div class ="col">
-                                    <form class = "row">
-                                        <div class="input-field col s6 s12 white-text">
+                                    <div class = "row">
+                                        <form class="input-field col s6 s12 white-text heroForm">
                                             <i class="white-text material-icons prefix">search</i>
                                             <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text heroSearch"></input>
                                             <button onsubmit="return false" class="btn waves-effect waves-light heroSubmit" type="submit" name="action">Submit
                                                 <i class="material-icons right">send</i>
                                             </button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
          <a class="waves-effect waves-light btn">Toys</a>
          <a class="waves-effect waves-light btn">Games</a>
          <a class="waves-effect waves-light btn">Movies</a>
-         <a class="waves-effect waves-light btn stats" value = "superman" >superman</a>
+         <a class="waves-effect waves-light btn stats">superman</a>
          <a class="waves-effect waves-light btn">Comic Books</a>
        </div>
  
@@ -83,11 +83,12 @@
                 <div class="row border-b maincontent">
                     <div class="col">
                         <h2 class="heroName"></h2>
-                        <div class="realName">Real Name:</div>
-                        <div class="dateOfBirth">DOB: </div>
-                        <div class="heroRace">Race: </div>
-                        <div class="heroGender">Gender: </div>
-                        <div class="aliases border-b">Aliases:</div>
+                        <div>Real Name: <span class="realName"></span></div>
+                        <div>DOB: <span class="dateOfBirth"> </span></div>
+                        <div>Race: <span class="heroRace"></span></div>
+                        <div>Gender: <span class="heroGender"> </span></div>
+                        <div>Aliases: <span class="aliases"></span></div>
+                        <div class="border-b"></div>
                         <h3 class="story-header">Story</h3>
                         <img class="mainImage" src="assets/images/superman.jpg">
                         <div class="content story">
@@ -112,9 +113,9 @@
                         <div class="col">
                             <h2>Publication Facts</h2>
                             <div class="content">
-                                <div class="firstAppearance">First Appearance: Issue </div>
-                                <div class="issueCount">Number of Issue Appearances: </div>
-                                <div class="publisher">Publisher: </div>
+                                <div>First Appearance: Issue <span class="firstAppearance"></span></div>
+                                <div>Number of Issue Appearances: <span class="issueCount"></span></div>
+                                <div>Publisher: <span class="publisher"></span></div>
                             </div>
                         </div>
                     </div>
