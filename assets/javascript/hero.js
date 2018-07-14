@@ -7,7 +7,6 @@ $(function(){
         origin : "",
         imageUrl : "",
         aliases: "",
-        creators: "",
         gender: "",
         birth: "",
         firstAppearance: "",
@@ -21,7 +20,7 @@ $(function(){
     
     var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
     //var test = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key="+ key +"&filter=name%3Adeadpool&format=JSON";
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSON";
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=" + key + "&query=" + query + "&limit=1&format=JSON";
     $.ajax({
         url: queryURL,
         method: "GET"
