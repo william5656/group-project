@@ -7,7 +7,6 @@ $(function(){
         origin : "",
         imageUrl : "",
         aliases: "",
-        creators: "",
         gender: "",
         birth: "",
         firstAppearance: "",
