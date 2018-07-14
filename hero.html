@@ -28,6 +28,11 @@
    <!-- firebase  -->
    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
 
+   <!-- chart library -->
+   <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+   <!-- stats local js -->
+   <script type="text/javascript" src="assets/javascript/statsbar.js"></script>
+
 </head>
 <body>
 
@@ -82,6 +87,9 @@
             <div class="col">
                 <div class="row border-b">
                     <div class="col">
+                        <div class="chart-container">
+                            <canvas id="myChart" width="300" height="220"></canvas>
+                        </div>
                         <h2 class="heroName"></h2>
                         <div>Real Name: <span class="realName"></span></div>
                         <div>DOB: <span class="dateOfBirth"> </span></div>
