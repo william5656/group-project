@@ -17,7 +17,7 @@ $(document).ready(function() {
 
     $(document).on("click",".Stats", function() {
         var superHero = $(".Stats").val();
-        var queryURL1 = "https://cors-anywhere.herokuapp.com/http://superheroapi.com/api/10155912004548192/search/" +
+        var queryURL1 = "https://cryptic-headland-94862.herokuapp.com/http://superheroapi.com/api/10155912004548192/search/" +
         superHero + "/id/powerstats";
 
         $.ajax({
