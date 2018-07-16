@@ -87,18 +87,7 @@ $(function(){
         var getInput = $(".heroSearch").val();
         localStorage.setItem("query", getInput);
         query = localStorage.getItem("query");
-        $(".heroSearch").empty();
-        //console.log(hero);
-        //getInput = hero;
-        /*$(".filter").empty();
-        for(var i = 0; i < topics.length; i++){
-            var a = $("<button>");
-             a.addClass("waves-effect waves-light btn " + topics[i]);
-             a.attr("value", searchInput);
-             a.append(topics[i]);
-             $(".filter").append(a);
-        }*/
-        //$(".chart-container").hide();
+        console.log(hero);
         renderButtons();
         heroAjax();
         renderChart();
@@ -108,18 +97,25 @@ $(function(){
         for(var i = 0; i < topics.length; i++){
             var a = $("<button>");
             a.addClass("waves-effect waves-light btn " + topics[i]);
-            /*if(topics[i] === "Stats"){
-                var link = $("<a>");
-                link.text(topics[i]);
-                link.attr("href", "./statsbar.html");
-                a.append(link);
-            }*/
+            // if(topics[i] === "Movies"){
+            
+            //     var link = $("<a>");
+            //     link.text(topics[i]);
+            //     link.attr("href", "./movies.html");
+            //     a.append(link);
+            // }
             a.attr("value", query);
             a.append(topics[i]);
             $(".filter").append(a);
             //console.log(query);
+
+            $(".Movies").on("click", function(){
+                window.location= "./movies.html"
+            });
         }
     }
+
+
     
 
     function renderChart(){
