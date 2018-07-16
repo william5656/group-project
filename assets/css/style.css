@@ -3,7 +3,7 @@
   float: left;
   width: 100%;
   border: 3px solid red;
-margin-top: 20px;
+  margin-top: 20px;
   padding: 5px;
   height: 20px;
   border-radius: 5px;
@@ -80,4 +80,10 @@ nav .brand-logo {
     height: 40%;
     float: left;
     margin-left: 50px; 
+}
+
+.chart-container {
+    width: 400px;
+    height: 320px;
+    margin: 20px auto;
 }
