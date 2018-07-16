@@ -63,6 +63,25 @@ nav .brand-logo {
 .btn {
     margin-left : 10px;
 }
+
+.movie-holder {
+    width: 250px;
+    margin-bottom: 30px;
+    float: left;
+}
+
+.title {
+    font-size: 30px;
+    border-bottom: 1px solid black;
+}
+
+.movie-container{
+    width: 45%;
+    height: 40%;
+    float: left;
+    margin-left: 50px; 
+}
+
 .chart-container {
     width: 400px;
     height: 320px;

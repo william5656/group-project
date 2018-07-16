@@ -11,7 +11,8 @@ $(function(){
         birth: "",
         firstAppearance: "",
         publisher: "",
-        issueCount: ""
+        issueCount: "",
+        heroID: ""
     }
 
     var topics = ["Toys", "Games", "Movies", "Stats", "Comic Books"];
@@ -74,14 +75,16 @@ $(function(){
             $(".mainImage").attr("src", hero.imageUrl);
             $(".firstAppearance").text(hero.firstAppearance);       
             $(".publisher").text(hero.publisher);    
-            $(".issueCount").text(hero.issueCount);    
+            $(".issueCount").text(hero.issueCount);
+            
+            hero.heroID = response.results[0].id;  
+            console.log(hero.heroID);        
         });
     }
     
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
         var getInput = $(".heroSearch").val();
-        //console.log(getInput);
         localStorage.setItem("query", getInput);
         query = localStorage.getItem("query");
         $(".heroSearch").empty();
@@ -100,8 +103,6 @@ $(function(){
         heroAjax();
         renderChart();
     });
-    //$(".heroSearch").empty();
-    //hero = $(".heroSearch").val();
     function renderButtons(){
         $(".filter").empty();
         for(var i = 0; i < topics.length; i++){
