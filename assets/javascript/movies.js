@@ -5,7 +5,7 @@ $(document).ready(function() {
     
     
     var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
-    var queryURL = "https://cryptic-headland-94862.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSON";
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSON";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -16,7 +16,7 @@ $(document).ready(function() {
         });   
 
         function displayMovie(){
-        var queryURL = "https://cryptic-headland-94862.herokuapp.com/https://comicvine.gamespot.com/api/"+ heroID + "/movies/?api_key=" + key + "&filter=name%3A" + query + "&limit=10&format=JSON";
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/"+ heroID + "/movies/?api_key=" + key + "&filter=name%3A" + query + "&limit=10&format=JSON";
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -53,6 +53,7 @@ $(document).ready(function() {
 
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
+        $(".heroSearch").empty();
         displayMovie();
     })
 
