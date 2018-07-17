@@ -24,11 +24,15 @@
    <!-- local js  -->
    <script type="text/javascript" src="./assets/javascript/logic.js "></script>
    <!-- hero js  -->
-   <script type="text/javascript" src="./assets/javascript/hero.js "></script>
-   <!-- movie js  -->
-   <script type="text/javascript" src="./assets/javascript/movies.js "></script>
-   <!-- firebase  -->
-   <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+   <script type="text/javascript" src="./assets/javascript/hero.js"></script>
+   <!-- shopping js  -->
+   <script type="text/javascript" src="./assets/javascript/movies.js"></script>
+
+
+   <!-- chart library -->
+   <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+   <!-- stats local js -->
+   <!-- <script type="text/javascript" src="assets/javascript/statsbar.js"></script> -->
 
 </head>
 <body>
@@ -79,9 +83,10 @@
        </div>
     
     </div>
-
-
-    <div>
+    <div class="chart-container">
+        <canvas id="myChart" width="300" height="220"></canvas>
+    </div>
+    <div class>
         <div class ="movie-box row">
 
         </div>
