@@ -68,18 +68,19 @@ nav .brand-logo {
     width: 250px;
     margin-bottom: 30px;
     float: left;
+    margin-right: 20px;
 }
 
 .title {
     font-size: 30px;
-    border-bottom: 1px solid black;
+  
 }
 
 .movie-container{
-    width: 39%;
-    height: 39%;
+    width: 500px;
+    height: 450px;
     float: left;
-    margin-left: 50px; 
+    margin-left: 60px; 
 }
 
 .chart-container {
@@ -87,3 +88,6 @@ nav .brand-logo {
     height: 320px;
     margin: 20px auto;
 }
+
+.deck {
+    margin-left: 50px;}

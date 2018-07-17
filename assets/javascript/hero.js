@@ -25,21 +25,13 @@ $(function(){
     
 
     var query = localStorage.getItem("query");
-    //console.log(query);
     function heroAjax(){
-        //var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
         var key = "8cba4aa547c28425aa27e55b217f2ca9541d38ce";
-        var proxy = "https://cryptic-headland-94862.herokuapp.com/"
-        //var test = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key="+ key +"&filter=name%3Adeadpool&format=JSON";
+       //var proxy = "https://cryptic-headland-94862.herokuapp.com/"
         var queryURL = "https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSONP";
-        //var test2 = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0&query=%3Abruce+wayne&limit=1&format=JSON"
-        var header = new Headers();
-        header.append("User-Agent", "schoolProject");
+
         $.ajax({
-            /*headers: {
-                'x-requested-with': 'XMLHttpRequest'
-            },*/
-            //header,
+     
             url: queryURL,
             method: "GET",
             dataType: "jsonp",
@@ -90,32 +82,18 @@ $(function(){
             $(".issueCount").text(hero.issueCount);
             
             hero.heroID = response.results[0].id;  
-            console.log(hero.heroID);        
+       
         });
     }
-    
+
+   
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
         var getInput = $(".heroSearch").val();
         localStorage.setItem("query", getInput);
         query = localStorage.getItem("query");
         $(".heroSearch").empty();
-        //console.log(hero);
-        //getInput = hero;
-        /*$(".filter").empty();
-        for(var i = 0; i < topics.length; i++){
-            var a = $("<button>");
-             a.addClass("waves-effect waves-light btn " + topics[i]);
-             a.attr("value", searchInput);
-             a.append(topics[i]);
-             $(".filter").append(a);
-        }*/
-        //$(".chart-container").hide();
-        /*renderButtons();
-        console.log(hero);
-        renderButtons();
-        heroAjax();
-        renderChart();*/
+
         location.reload();
     });
     function renderButtons(){
@@ -123,17 +101,11 @@ $(function(){
         for(var i = 0; i < topics.length; i++){
             var a = $("<button>");
             a.addClass("waves-effect waves-light btn " + topics[i]);
-            // if(topics[i] === "Movies"){
-            
-            //     var link = $("<a>");
-            //     link.text(topics[i]);
-            //     link.attr("href", "./movies.html");
-            //     a.append(link);
-            // }
+          
             a.attr("value", query);
             a.append(topics[i]);
             $(".filter").append(a);
-            //console.log(query);
+       
         }
     }
 
