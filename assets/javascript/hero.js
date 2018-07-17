@@ -15,7 +15,7 @@ $(function(){
         heroID: ""
     }
 
-    var topics = ["Toys", "Games", "Movies", "Stats", "Comic Books"];
+    var topics = ["Home", "Toys", "Movies", "Stats", "Comic Books"];
 
     /*$(".heroSearch").on("click", function(){
         var getInput = $(".searchTerm").val();
@@ -134,12 +134,9 @@ $(function(){
             a.append(topics[i]);
             $(".filter").append(a);
             //console.log(query);
-
         }
     }
 
-
-    
 
     function renderChart(){
         var queryURL = "https://cryptic-headland-94862.herokuapp.com/http://superheroapi.com/api/10155912004548192/search/" +
@@ -254,16 +251,20 @@ $(function(){
     }
 
     $(".filter").on("click", ".Stats", function(){
-        $(".chart-container").show();
+        $(".chart-container").show()
+    });
+
+    $(document).on("click",".Home", function(){
+        window.location= "./hero.html"
+    });
+    $(document).on("click", ".Movies", function(){
+        window.location= "./movies.html"
     });
 
     $(".filter").on("click", ".Toys", function(){
         window.location = "./toys.html";
     });
 
-    $(".Movies").on("click", function(){
-        window.location = "./movies.html";
-    });
 
     hideFilterContainers();
     heroAjax();

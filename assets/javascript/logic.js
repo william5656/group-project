@@ -8,11 +8,6 @@ $(document).ready(function() {
         localStorage.setItem("query",getInput);
     });
         //localStorage.setItem("query",getInput);
-
-        
-    
-
-    
     
 
 })
