@@ -33,7 +33,6 @@ $(function(){
         + "&resources=character"
         + "&format=JSONP";
         console.log(queryURL);
-        //var test2 = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0&query=%3Abruce+wayne&limit=1&format=JSON"
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -43,27 +42,7 @@ $(function(){
 
         }).then(function(response) {
             console.log(response);
-            //console.log(response.results);
-            
-            /*function indexOfMax(arr) {
-                if (arr.length === 0) {
-                    return -1;
-                }
-            
-                var max = arr[0].count_of_issue_appearances;
-                var maxIndex = 0;
-            
-                for (var i = 1; i < arr.length; i++) {
-                    if (arr[i].count_of_issue_appearances > max) {
-                        maxIndex = i;
-                        max = arr[i];
-                    }
-                }
-            
-                return maxIndex;
-            }
-            var i = indexOfMax(response.results);*/
-            //basic info
+           
             hero.name = response.results[0].name;
             hero.realName = response.results[0].real_name;
             if (response.results[0].birth === null) {
@@ -107,7 +86,7 @@ $(function(){
         });
     }
 
-   
+   // when entered hero grabs value
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
         var getInput = $(".heroSearch").val();
