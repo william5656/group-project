@@ -96,9 +96,10 @@ $(function(){
              $(".filter").append(a);
         }*/
         //$(".chart-container").hide();
-        renderButtons();
+        /*renderButtons();
         heroAjax();
-        renderChart();
+        renderChart();*/
+        location.reload();
     });
     //$(".heroSearch").empty();
     //hero = $(".heroSearch").val();
