@@ -273,7 +273,7 @@ $(function(){
     }
 
     $(".filter").on("click", ".Stats", function(){
-        $(".chart-container").show()
+        $(".chart-container").toggle()
     });
 
     $(document).on("click",".Home", function(){
