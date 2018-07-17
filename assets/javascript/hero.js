@@ -14,7 +14,6 @@ $(function(){
         issueCount: "",
         heroID: ""
     }
-
     var topics = ["Home", "Toys", "Movies", "Stats", "Comic Books"];
 
     /*$(".heroSearch").on("click", function(){
@@ -27,10 +26,11 @@ $(function(){
     var query = localStorage.getItem("query");
     function heroAjax(){
         var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
-        
+
         var queryURL = "https://comicvine.gamespot.com/api/search/?api_key=" 
         + key + "&query=" + query 
-        + "&resources=character"
+        + "&sort=count_of_issue_appearances%3Adesc"
+        + "&limit=5"
         + "&format=JSONP";
         console.log(queryURL);
         //var test2 = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0&query=%3Abruce+wayne&limit=1&format=JSON"
@@ -45,7 +45,7 @@ $(function(){
             console.log(response);
             //console.log(response.results);
             
-            /*function indexOfMax(arr) {
+            function indexOfMax(arr) {
                 if (arr.length === 0) {
                     return -1;
                 }
@@ -62,33 +62,33 @@ $(function(){
             
                 return maxIndex;
             }
-            var i = indexOfMax(response.results);*/
+            var i = indexOfMax(response.results);
             //basic info
-            hero.name = response.results[0].name;
-            hero.realName = response.results[0].real_name;
-            if (response.results[0].birth === null) {
+            hero.name = response.results[i].name;
+            hero.realName = response.results[i].real_name;
+            if (response.results[i].birth === null) {
                 hero.birth = "Unknown";
             } else {
-                hero.birth = response.results[0].birth;
+                hero.birth = response.results[i].birth;
             };
-            hero.origin = response.results[0].origin.name;
-            if (response.results[0].gender === 1) {
+            hero.origin = response.results[i].origin.name;
+            if (response.results[i].gender === 1) {
                 hero.gender = "Male";
-            } else if (response.results[0].gender === 2) {
+            } else if (response.results[i].gender === 2) {
             hero.gender = "Female";
             } else {
                 hero.gender = "Other";
             };
-            hero.aliases = response.results[0].aliases;
+            hero.aliases = response.results[i].aliases;
 
             // story
-            hero.deck = response.results[0].deck;
-            hero.imageUrl = response.results[0].image.original_url;
+            hero.deck = response.results[i].deck;
+            hero.imageUrl = response.results[i].image.original_url;
             
             //publication facts
-            hero.firstAppearance = response.results[0].first_appeared_in_issue.issue_number + " - " + response.results[0].first_appeared_in_issue.name;
-            hero.publisher = response.results[0].publisher.name;
-            hero.issueCount = response.results[0].count_of_issue_appearances;
+            hero.firstAppearance = response.results[i].first_appeared_in_issue.issue_number + " - " + response.results[i].first_appeared_in_issue.name;
+            hero.publisher = response.results[i].publisher.name;
+            hero.issueCount = response.results[i].count_of_issue_appearances;
 
             $(".heroName").text(hero.name);
             $(".realName").text(" " + hero.realName);
@@ -101,8 +101,10 @@ $(function(){
             $(".firstAppearance").text(hero.firstAppearance);       
             $(".publisher").text(hero.publisher);    
             $(".issueCount").text(hero.issueCount);
+            hero.heroID = response.results[0].id; 
+            query = hero.name;
             
-            hero.heroID = response.results[0].id;  
+            renderChart();
             //console.log(hero.heroID);        
         });
     }
@@ -242,8 +244,9 @@ $(function(){
     function hideFilterContainers(){
         $(".chart-container").hide();  
     }
-
+    
     $(".filter").on("click", ".Stats", function(){
+        
         $(".chart-container").toggle()
     });
 
@@ -265,6 +268,5 @@ $(function(){
 
     hideFilterContainers();
     heroAjax();
-    renderChart();
     renderButtons();
 });
