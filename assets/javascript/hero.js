@@ -33,7 +33,6 @@ $(function(){
         + "&limit=5"
         + "&format=JSONP";
         console.log(queryURL);
-        //var test2 = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0&query=%3Abruce+wayne&limit=1&format=JSON"
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -112,7 +111,7 @@ $(function(){
         });
     }
 
-   
+   // when entered hero grabs value
     $(".heroSubmit").on("click", function(event) {
         event.preventDefault();
         var getInput = $(".heroSearch").val();
