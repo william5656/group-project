@@ -3,31 +3,41 @@ $(document).ready(function() {
     var query = localStorage.getItem("query");
     var heroID = "";
 
-    
-    var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSON";
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
 
+        var key = "8cba4aa547c28425aa27e55b217f2ca9541d38ce";
+        var queryURL = "https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSONP";
+
+        $.ajax({
+     
+            url: queryURL,
+            method: "GET",
+            dataType: "jsonp",
+            crossDomain:true,
+            jsonp:"json_callback"
+
+        }).then(function(response) {
+            console.log(response);
             heroID = response.results[0].id;  
+            console.log(heroID);
     
         });   
         
         function displayMovie(){
-             
-        var queryURL = "https://cryptic-headland-94862.herokuapp.com/https://comicvine.gamespot.com/api/"+ heroID + "/movies/?api_key=" + key + "&filter=name%3A" + query + "&limit=10&format=JSON";
+        var queryURL2 = "https://comicvine.gamespot.com/api/movies/?_=1531805789833&api_key=8cba4aa547c28425aa27e55b217f2ca9541d38ce&filter=name%3A" + query +"&format=JSONP&json_callback=jQuery331025566422322834037_1531805789832&limit=10";
         $.ajax({
-            url: queryURL,
-            method: "GET"
+            url: queryURL2,
+            method: "GET",
+            dataType: "jsonp",
+            crossDomain:true,
+            jsonp:"json_callback"
         }).then(function(response) {
-           
+            console.log(queryURL2);
             var movies = response.results
             console.log(movies);
+
             for(var i=0; i < movies.length; i++){
 
-               var movieDiv = $("<div class = movie-container>");
+               var movieDiv = $("<div class = movie-container col>");
                movieDiv.addClass("yo");
 
                var image = movies[i].image.small_url; 
@@ -40,12 +50,13 @@ $(document).ready(function() {
                movieDiv.append("<div>" +  rating + "</div>")
 
                var info = movies[i].deck;
-               movieDiv.append(info );
+               movieDiv.append("<div class = deck >" + info + "</div>");
 
                $(".movie-box").append(movieDiv);
 
                 console.log(movies[i].name);
             }
+        
         });
     }
 
@@ -61,11 +72,11 @@ $(document).ready(function() {
         query = localStorage.getItem("query");
        $(".heroSearch").empty();
         $(".movie-box").empty();
-          displayMovie();
-      //  hello();
+         displayMovie();
+    //    hello();
     })
 
-   // hello();
+//    hello();
     displayMovie();
     
 });
