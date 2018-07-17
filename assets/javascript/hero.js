@@ -27,13 +27,25 @@ $(function(){
     var query = localStorage.getItem("query");
     //console.log(query);
     function heroAjax(){
-        var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
+        //var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
+        var key = "8cba4aa547c28425aa27e55b217f2ca9541d38ce";
+        var proxy = "https://cryptic-headland-94862.herokuapp.com/"
         //var test = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key="+ key +"&filter=name%3Adeadpool&format=JSON";
-        var queryURL = "https://cryptic-headland-94862.herokuapp.com/https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSON";
+        var queryURL = "https://comicvine.gamespot.com/api/characters/?api_key=" + key + "&filter=name%3A" + query + "&limit=1&format=JSONP";
         //var test2 = "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/?api_key=390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0&query=%3Abruce+wayne&limit=1&format=JSON"
+        var header = new Headers();
+        header.append("User-Agent", "schoolProject");
         $.ajax({
+            /*headers: {
+                'x-requested-with': 'XMLHttpRequest'
+            },*/
+            //header,
             url: queryURL,
-            method: "GET"
+            method: "GET",
+            dataType: "jsonp",
+            crossDomain:true,
+            jsonp:"json_callback"
+
         }).then(function(response) {
             //console.log(response);
             //console.log(response.results);
@@ -87,10 +99,24 @@ $(function(){
         var getInput = $(".heroSearch").val();
         localStorage.setItem("query", getInput);
         query = localStorage.getItem("query");
+        $(".heroSearch").empty();
+        //console.log(hero);
+        //getInput = hero;
+        /*$(".filter").empty();
+        for(var i = 0; i < topics.length; i++){
+            var a = $("<button>");
+             a.addClass("waves-effect waves-light btn " + topics[i]);
+             a.attr("value", searchInput);
+             a.append(topics[i]);
+             $(".filter").append(a);
+        }*/
+        //$(".chart-container").hide();
+        /*renderButtons();
         console.log(hero);
         renderButtons();
         heroAjax();
-        renderChart();
+        renderChart();*/
+        location.reload();
     });
     function renderButtons(){
         $(".filter").empty();
@@ -124,30 +150,30 @@ $(function(){
           .then(function (response) {
               var results = response.results;
               for (var i = 0; i < results.length; i++) {
-                console.log(results[i].powerstats);
+                //console.log(results[i].powerstats);
                 var heroStatsIntelligence = response.results[0].powerstats.intelligence;
                 var heroStatsInt = JSON.parse(heroStatsIntelligence);
-                console.log("Intelligence:" + heroStatsInt);
+                //console.log("Intelligence:" + heroStatsInt);
 
                 var heroStatsStrength = response.results[0].powerstats.strength;
                 var heroStatsStr = JSON.parse(heroStatsStrength);
-                console.log("Strength:" + heroStatsStr);
+                //console.log("Strength:" + heroStatsStr);
 
                 var heroStatsSpeed = response.results[0].powerstats.speed;
                 var heroStatsSpd = JSON.parse(heroStatsSpeed);
-                console.log("Speed:" + heroStatsSpd);
+                //console.log("Speed:" + heroStatsSpd);
 
                 var heroStatsDurability = response.results[0].powerstats.durability;
                 var heroStatsDur = JSON.parse(heroStatsDurability);
-                console.log("Durability:" + heroStatsDur);
+                //console.log("Durability:" + heroStatsDur);
 
                 var heroStatsPower = response.results[0].powerstats.power;
                 var heroStatsPow = JSON.parse(heroStatsPower);
-                console.log("Power:" + heroStatsPow);
+                //console.log("Power:" + heroStatsPow);
 
                 var heroStatsCombat = response.results[0].powerstats.combat;
                 var heroStatsCom = JSON.parse(heroStatsCombat);
-                console.log("Combat:" + heroStatsCom);
+                //console.log("Combat:" + heroStatsCom);
 
           
                 var ctx = document.getElementById("myChart");
@@ -219,7 +245,10 @@ $(function(){
                     }
             })       
     }
-    $(".chart-container").hide();
+
+    function hideFilterContainers(){
+        $(".chart-container").hide();  
+    }
 
     $(".filter").on("click", ".Stats", function(){
         $(".chart-container").show()
@@ -232,7 +261,12 @@ $(function(){
         window.location= "./movies.html"
     });
 
-    
+    $(".filter").on("click", ".Toys", function(){
+        window.location = "./toys.html";
+    });
+
+
+    hideFilterContainers();
     heroAjax();
     renderChart();
     renderButtons();
