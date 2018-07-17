@@ -27,7 +27,7 @@ $(function(){
     var query = localStorage.getItem("query");
     function heroAjax(){
         var key = "390f1045415ee2e2bbb6b090a5a6cc8457d2f4f0";
-
+        
         var queryURL = "https://comicvine.gamespot.com/api/search/?api_key=" 
         + key + "&query=" + query 
         + "&resources=character"
@@ -255,9 +255,13 @@ $(function(){
     });
 
     $(".filter").on("click", ".Toys", function(){
+        //localStorage.setItem("item", "toy");
         window.location = "./toys.html";
     });
-
+    $(".filter").on("click", ".Comic", function(){
+        //localStorage.setItem("item", "comic");
+        window.location = "./comic.html";
+    });
 
     hideFilterContainers();
     heroAjax();
