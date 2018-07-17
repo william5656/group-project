@@ -14,8 +14,7 @@ $(function(){
         issueCount: "",
         heroID: ""
     }
-
-    var topics = ["Home", "Toys", "Movies", "Stats", "Comic Books"];
+    var topics = ["Home", "Toys", "Movies", "Comic Books"];
 
     /*$(".heroSearch").on("click", function(){
         var getInput = $(".searchTerm").val();
@@ -30,7 +29,8 @@ $(function(){
 
         var queryURL = "https://comicvine.gamespot.com/api/search/?api_key=" 
         + key + "&query=" + query 
-        + "&resources=character"
+        + "&sort=count_of_issue_appearances%3Adesc"
+        + "&limit=5"
         + "&format=JSONP";
         console.log(queryURL);
         $.ajax({
@@ -42,32 +42,55 @@ $(function(){
 
         }).then(function(response) {
             console.log(response);
-           
-            hero.name = response.results[0].name;
-            hero.realName = response.results[0].real_name;
-            if (response.results[0].birth === null) {
+            //console.log(response.results);
+            
+            function indexOfMax(arr) {
+                if (arr.length === 0) {
+                    return -1;
+                }
+            
+                var max = arr[0].count_of_issue_appearances;
+                var maxIndex = 0;
+            
+                for (var i = 1; i < arr.length; i++) {
+                    if (arr[i].count_of_issue_appearances > max) {
+                        maxIndex = i;
+                        max = arr[i];
+                    }
+                }
+            
+                return maxIndex;
+            }
+            var i = indexOfMax(response.results);
+            //basic info
+            hero.name = response.results[i].name;
+            hero.realName = response.results[i].real_name;
+            if (response.results[i].birth === null) {
                 hero.birth = "Unknown";
             } else {
-                hero.birth = response.results[0].birth;
+                hero.birth = response.results[i].birth;
             };
-            hero.origin = response.results[0].origin.name;
-            if (response.results[0].gender === 1) {
+            hero.origin = response.results[i].origin.name;
+            if (response.results[i].gender === 1) {
                 hero.gender = "Male";
-            } else if (response.results[0].gender === 2) {
+            } else if (response.results[i].gender === 2) {
             hero.gender = "Female";
             } else {
                 hero.gender = "Other";
             };
-            hero.aliases = response.results[0].aliases;
+            hero.aliasesraw = response.results[i].aliases;
+            
+
+            hero.aliases =  hero.aliasesraw.replace(/\n/ig, ', ');
 
             // story
-            hero.deck = response.results[0].deck;
-            hero.imageUrl = response.results[0].image.original_url;
+            hero.deck = response.results[i].deck;
+            hero.imageUrl = response.results[i].image.original_url;
             
             //publication facts
-            hero.firstAppearance = response.results[0].first_appeared_in_issue.issue_number + " - " + response.results[0].first_appeared_in_issue.name;
-            hero.publisher = response.results[0].publisher.name;
-            hero.issueCount = response.results[0].count_of_issue_appearances;
+            hero.firstAppearance = response.results[i].first_appeared_in_issue.issue_number + " - " + response.results[i].first_appeared_in_issue.name;
+            hero.publisher = response.results[i].publisher.name;
+            hero.issueCount = response.results[i].count_of_issue_appearances;
 
             $(".heroName").text(hero.name);
             $(".realName").text(" " + hero.realName);
@@ -80,8 +103,10 @@ $(function(){
             $(".firstAppearance").text(hero.firstAppearance);       
             $(".publisher").text(hero.publisher);    
             $(".issueCount").text(hero.issueCount);
+            hero.heroID = response.results[0].id; 
+            query = hero.name;
             
-            hero.heroID = response.results[0].id;  
+            renderChart();
             //console.log(hero.heroID);        
         });
     }
@@ -100,7 +125,7 @@ $(function(){
         $(".filter").empty();
         for(var i = 0; i < topics.length; i++){
             var a = $("<button>");
-            a.addClass("waves-effect waves-light btn " + topics[i]);
+            a.addClass("waves-effect waves-light btn red " + topics[i]);
           
             a.attr("value", query);
             a.append(topics[i]);
@@ -218,13 +243,14 @@ $(function(){
             })       
     }
 
-    function hideFilterContainers(){
-        $(".chart-container").hide();  
-    }
-
-    $(".filter").on("click", ".Stats", function(){
-        $(".chart-container").show()
-    });
+    // function hideFilterContainers(){
+    //     $(".chart-container").hide();  
+    // }
+    
+    // $(".filter").on("click", ".Stats", function(){
+        
+    //     $(".chart-container").toggle()
+    // });
 
     $(document).on("click",".Home", function(){
         window.location= "./hero.html"
@@ -234,12 +260,16 @@ $(function(){
     });
 
     $(".filter").on("click", ".Toys", function(){
+        //localStorage.setItem("item", "toy");
         window.location = "./toys.html";
     });
+    $(".filter").on("click", ".Comic", function(){
+        //localStorage.setItem("item", "comic");
+        window.location = "./comic.html";
+    });
 
-
-    hideFilterContainers();
+    // hideFilterContainers()
     heroAjax();
-    renderChart();
     renderButtons();
 });
+
