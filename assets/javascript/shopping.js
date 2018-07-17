@@ -45,9 +45,6 @@ $(function(){
             method: "GET"
         }).then(function(response) {
             var json = JSON.parse(response);
-            console.log(json);
-            console.log(json.findItemsByKeywordsResponse[0].searchResult[0].item[0].title[0]);
-            console.log(json.findItemsByKeywordsResponse[0].searchResult[0].item[0].viewItemURL[0]);
 
 
             
