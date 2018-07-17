@@ -133,30 +133,30 @@ $(function(){
           .then(function (response) {
               var results = response.results;
               for (var i = 0; i < results.length; i++) {
-                console.log(results[i].powerstats);
+                //console.log(results[i].powerstats);
                 var heroStatsIntelligence = response.results[0].powerstats.intelligence;
                 var heroStatsInt = JSON.parse(heroStatsIntelligence);
-                console.log("Intelligence:" + heroStatsInt);
+                //console.log("Intelligence:" + heroStatsInt);
 
                 var heroStatsStrength = response.results[0].powerstats.strength;
                 var heroStatsStr = JSON.parse(heroStatsStrength);
-                console.log("Strength:" + heroStatsStr);
+                //console.log("Strength:" + heroStatsStr);
 
                 var heroStatsSpeed = response.results[0].powerstats.speed;
                 var heroStatsSpd = JSON.parse(heroStatsSpeed);
-                console.log("Speed:" + heroStatsSpd);
+                //console.log("Speed:" + heroStatsSpd);
 
                 var heroStatsDurability = response.results[0].powerstats.durability;
                 var heroStatsDur = JSON.parse(heroStatsDurability);
-                console.log("Durability:" + heroStatsDur);
+                //console.log("Durability:" + heroStatsDur);
 
                 var heroStatsPower = response.results[0].powerstats.power;
                 var heroStatsPow = JSON.parse(heroStatsPower);
-                console.log("Power:" + heroStatsPow);
+                //console.log("Power:" + heroStatsPow);
 
                 var heroStatsCombat = response.results[0].powerstats.combat;
                 var heroStatsCom = JSON.parse(heroStatsCombat);
-                console.log("Combat:" + heroStatsCom);
+                //console.log("Combat:" + heroStatsCom);
 
           
                 var ctx = document.getElementById("myChart");
@@ -228,11 +228,20 @@ $(function(){
                     }
             })       
     }
-    $(".chart-container").hide();
+
+    function hideFilterContainers(){
+        $(".chart-container").hide();  
+    }
 
     $(".filter").on("click", ".Stats", function(){
         $(".chart-container").show();
     });
+
+    $(".filter").on("click", ".Toys", function(){
+        $(".toysContainer").show();
+    });
+
+    hideFilterContainers();
     heroAjax();
     renderChart();
     renderButtons();
