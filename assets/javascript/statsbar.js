@@ -4,15 +4,19 @@ $("#submit-name").on("click", function () {
       var superHero = $("#name-input").val().trim();;
       // var superHeroTest = "deadpool";
       console.log(superHero);
-      var queryURL = "https://cors-anywhere.herokuapp.com/http://superheroapi.com/api/10155912004548192/search/" +
+      var queryURL = "http://superheroapi.com/api.php/10155912004548192/search/" +
         superHero + "/id/powerstats"; 
 
-      $.ajax({
-          url: queryURL,
+      fetch(queryURL, {
           method: "GET",
-
+          mode: 'cors'
         })
-        .then(function (response) {
+        .then(function (results) {
+          console.log(results.json())
+        })
+        .then(function(response){
+          console.log("hello")
+          console.log(response.results)
             var results = response.results;
             for (var i = 0; i < results.length; i++) {
               console.log(results[i].powerstats);

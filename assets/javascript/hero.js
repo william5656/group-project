@@ -136,15 +136,18 @@ $(function(){
 
 
     function renderChart(){
-        var queryURL = "https://cryptic-headland-94862.herokuapp.com/http://superheroapi.com/api/10155912004548192/search/" +
+        var queryURL = "http://superheroapi.com/api.php/10155912004548192/search/" +
           query + "/id/powerstats"; 
 
-        $.ajax({
-            url: queryURL,
+        fetch(queryURL, {
             method: "GET",
-
+            mode: 'cors'
+          })
+          .then(function(test){
+              return test.json()
           })
           .then(function (response) {
+              console.log(response.results)
               var results = response.results;
               for (var i = 0; i < results.length; i++) {
                 //console.log(results[i].powerstats);
