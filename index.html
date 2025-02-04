@@ -107,39 +107,6 @@
 
 
     </div>
-    <script>
-(function(s,u,r,f,l,y){
-   s[f]=s[f]||{init:function(){s[f].q=arguments}};
-   l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
-   l.src='https://surfly.com/surfly.js';y.parentNode.insertBefore(l,y);
-})(window,document,'script','Surfly');
-
-
-
-var settings = {
-   widget_key: '1f603cea59a944ae9fbc85e01b64464a',
-};
-
-
-
-Surfly.init(settings, function(initResult) {
-   if (initResult.success) {
-       if (!Surfly.isInsideSession) {
-           var button = Surfly.button();
-
-
-
-           // Add click event listener to capture data
-           button.onclick = function(event) {
-               console.log("Surfly button clicked!");
-               console.log("Captured Data:", event);
-           };
-       }
-   } else {
-       console.log("Surfly was unable to initialize properly.");
-   }
-});
-</script>
 
 
     <!-- Compiled and minified JavaScript -->
